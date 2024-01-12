@@ -13,8 +13,7 @@ import (
 // ./main.exe hollow ../sdfx/files/teapot.stl true 0.5 3 infilled.stl
 // ./main.exe hollow ../sdfx/files/teapot.stl false 0.5 3 hollowed.stl
 func main() {
-	var err error
-	err = command(os.Args[1:])
+	err := command(os.Args[1:])
 	if err != nil {
 		log.Fatal(err)
 	}
