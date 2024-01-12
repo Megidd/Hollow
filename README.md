@@ -33,7 +33,7 @@ This plugin offers a `HollowMesh` command to hollow out your 3D model.
 
 This command helps you hollow out the 3D model. The input parameters are:
 
-* Has gyroid infill or not.
+* To have a gyroid infill or not.
 * Thickness.
 * Accuracy.
 
