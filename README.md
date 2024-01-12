@@ -37,4 +37,4 @@ This command helps you hollow out the 3D model. The input parameters are:
 * Thickness.
 * Accuracy.
 
-It employs the signed distance field or SDF to hollow out.
+It employs the signed distance field or SDF under the hood.
