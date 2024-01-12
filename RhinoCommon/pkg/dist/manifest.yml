@@ -3,9 +3,10 @@ name: Hollow
 version: 1.0.7.0
 authors:
 - www.nano3dtech.com
-description: Hollow 3D meshes. https://github.com/Megidd/Hollow
+description: Hollow out 3D meshes. https://github.com/Megidd/Hollow
 url: https://github.com/Megidd/Hollow
 keywords:
+- Hollow
 - Hollowing
 - Voxel
 - Signed-distance
