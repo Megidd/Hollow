@@ -1,18 +1,14 @@
 ---
-name: BESO
+name: Hollow
 version: 1.0.7.0
 authors:
 - www.nano3dtech.com
-description: Topology optimization using BESO or Bi-directional Evolutionary Structural Optimization. https://github.com/Megidd/BESO
-url: https://github.com/Megidd/BESO
+description: Hollow 3D meshes. https://github.com/Megidd/Hollow
+url: https://github.com/Megidd/Hollow
 keywords:
-- Topology
-- Optimization
-- Topology-optimization
-- Finite-element-analysis
-- FEA
-- Generative-design
-- BESO
-- Bi-directional-Evolutionary-Structural-Optimization
+- Hollowing
+- Voxel
+- Signed-distance
+- SDF
 platform: win
 icon: icon.png
