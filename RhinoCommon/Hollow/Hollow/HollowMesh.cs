@@ -127,7 +127,7 @@ namespace Hollow
                     }
                 }
 
-                RhinoApp.WriteLine("Post process finished.");
+                RhinoApp.WriteLine("Post process finished: hollowed mesh is added to scene.");
             }
 
             catch (Exception ex)
