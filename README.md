@@ -36,3 +36,5 @@ This command helps you hollow out the 3D model. The input parameters are:
 * Has gyroid infill or not.
 * Thickness.
 * Accuracy.
+
+It employs the signed distance field or SDF to hollow out.
