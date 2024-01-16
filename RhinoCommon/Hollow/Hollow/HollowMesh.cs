@@ -2,12 +2,7 @@
 using Rhino.Commands;
 using Rhino.DocObjects;
 using Rhino.Geometry;
-using Rhino.Input;
-using Rhino.Input.Custom;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Runtime.Remoting.Messaging;
 
 namespace Hollow
 {
@@ -28,11 +23,17 @@ namespace Hollow
 
         private static RhinoDoc docCurrent; // Accessed by async post-process code.
         private static RhinoObject inObj = null; // Input object.
+
+        // Includes all the temp folder and files.
+        private Paths paths = null;
         
         protected override Result RunCommand(RhinoDoc doc, RunMode mode)
         {
+            // Initialize here to have new temp folder for every command run.
+            paths = new Paths();
+
             docCurrent = doc; // Accessed by async post-process code.
-            inObj = Helper.GetInputStl(Paths.stlIn);
+            inObj = Helper.GetInputStl(paths.stlIn);
             if (inObj == null)
             {
                 return Result.Failure;
@@ -56,7 +57,7 @@ namespace Hollow
 
             // Prepare arguments as text fields.
             string args = "";
-            args += Paths.stlIn;
+            args += paths.stlIn;
             args += " ";
             args += infill ? "true" : "false";
             args += " ";
@@ -65,21 +66,21 @@ namespace Hollow
             args += precision.ToString();
             args += " ";
             args
-            += Paths.stlOut;
+            += paths.stlOut;
 
-            Helper.RunLogic(Paths.logic, args, PostProcess);
+            Helper.RunLogic(paths.logic, args, PostProcess);
 
             RhinoApp.WriteLine("Process is started. Please wait...");
 
             return Result.Success;
         }
 
-        private static void PostProcess(object sender, EventArgs e)
+        private void PostProcess(object sender, EventArgs e)
         {
             try
             {
                 RhinoApp.WriteLine("Post process started.");
-                Mesh meshOut = Helper.LoadStlAsMesh(Paths.stlOut);
+                Mesh meshOut = Helper.LoadStlAsMesh(paths.stlOut);
 
                 // Run the CheckValidity method on the mesh.
                 MeshCheckParameters parameters = new MeshCheckParameters();
@@ -95,7 +96,7 @@ namespace Hollow
                 parameters.CheckForRandomFaceNormals = true;
                 parameters.CheckForSelfIntersection = true;
                 parameters.CheckForUnusedVertices = true;
-                Rhino.FileIO.TextLog log = new Rhino.FileIO.TextLog(Path.GetTempPath() + "mesh-checks.txt");
+                Rhino.FileIO.TextLog log = new Rhino.FileIO.TextLog(paths.logs);
                 bool isValid = meshOut.Check(log, ref parameters);
                 bool hasInvalidVertexIndices = Helper.HasInvalidVertexIndices(meshOut);
                 if (!isValid || hasInvalidVertexIndices)
