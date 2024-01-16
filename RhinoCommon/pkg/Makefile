@@ -5,7 +5,7 @@
 
 build:
 	cd %userprofile%\go\src\Hollow\RhinoCommon\Hollow
-	dotnet build Hollow.sln -c Release -f net48 -p:Version=1.0.0.0
+	dotnet build Hollow.sln -c Release -f net48 -p:Version=1.1.0.0
 
 # To delete outdated files.
 clean:
