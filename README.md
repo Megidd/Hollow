@@ -15,6 +15,12 @@ Simply visit the [plugin page](https://www.food4rhino.com/en/app/hollow). Then l
 
 Once the plugin is installed, its commands can be accessed by typing the plugin name on command line. Start typing `Hollow` on Rhino3D command line to auto complete the plugin commands.
 
+## User guide
+
+This video demonstrates how to use the plugin command after installation:
+
+[![Usage guide video](http://img.youtube.com/vi/ebvEctlTku8/0.jpg)](https://youtu.be/ebvEctlTku8 "Usage guide video")
+
 ## Screenshots
 
 ### Original model
